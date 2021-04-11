@@ -1,0 +1,12 @@
+version: '2.0'
+services:
+  smartbch:
+    image: smartbch
+    command: start
+    tty: true
+    stdin_open: true
+    ports:
+      - "8545:8545"
+    restart: always
+    volumes:
+      - ./data:/root/.smartbchd

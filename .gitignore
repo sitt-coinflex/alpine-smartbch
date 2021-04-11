@@ -1,0 +1,6 @@
+# Ignore generated volume data
+data
+# Ignore generated `test-keys.txt` from command `gen-test-keys`
+test-keys.txt
+# Remove MacOS indexer
+.DS_Store
