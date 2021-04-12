@@ -31,11 +31,11 @@ then
 elif [ "$CMD" == 'gen-test-keys' ];
 then
   # Generate a set of n test keys.
-  echo $(docker-compose run smartbch gen-test-keys | tr '[:blank:]' '\n')  >>./test-keys.txt
+  echo $(docker-compose run smartbch gen-test-keys | tr -s '[:space:]' '\r')  >> test-keys.txt
 elif [ "$CMD" == 'init' ];
 then
   # Init the node, include the keys from the last step as a comma separated list.
-  docker-compose run smartbch init mynode --chain-id 0x1 --init-balance=10000000000000000000 --test-keys="$(cat ./test-keys.txt | tr '\n' ',')"
+  docker-compose run smartbch init mynode --chain-id 0x1 --init-balance=10000000000000000000 --test-keys="$(cat test-keys.txt | tr '\r' ',' | tr -d ' ')"
 elif [ "$CMD" == 'up' ];
 then
   # Start it up, you are all set!
