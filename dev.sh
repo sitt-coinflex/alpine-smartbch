@@ -35,7 +35,7 @@ then
 elif [ "$CMD" == 'init' ];
 then
   # Init the node, include the keys from the last step as a comma separated list.
-  docker-compose run smartbch init mynode --chain-id 0x1 --init-balance=10000000000000000000 --test-keys="$(cat test-keys.txt | tr '\r' ',' | tr -d ' ')"
+  docker-compose run smartbch init mynode --chain-id 0x1 --init-balance=10000000000000000000 --test-keys="$(cat test-keys.txt | tr '\r' ',' | sed 's/,$//g')"
 elif [ "$CMD" == 'up' ];
 then
   # Start it up, you are all set!
